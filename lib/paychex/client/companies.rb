@@ -2,9 +2,39 @@ module Paychex
   class Client
     module Companies
       # Get a list of all the linked companies
-      # This will be unavailable once we have 200+ linked companies
       def linked_companies
-        get('companies')
+        limit = per_page
+        opts = { limit: limit, offset: 0 }
+        response_content = []
+        current_page = 1
+
+        response = companies(opts)
+
+        begin
+          while response && response.body
+            companies_count = response.body.fetch('metadata').fetch('pagination').fetch('total')
+
+            break unless companies_count
+
+            no_of_pages = (companies_count.to_f / limit).ceil
+
+            companies_content = response.body.fetch('content').to_a
+            companies_content = companies_content.select { |c| c['hasPermission'] } if companies_content
+            response_content += companies_content
+
+            current_page += 1
+            if current_page <= no_of_pages
+              opts = { limit: limit, offset: (current_page - 1) * limit }
+              response = companies(opts)
+            else
+              break
+            end
+          end
+        rescue StandardError => e
+          return response_content
+        end
+
+        response_content
       end
 
       # Get profile of a linked company
@@ -83,6 +113,16 @@ module Paychex
         end
         ret['message'] = 'unsupported'
         ret
+      end
+    end
+
+    private
+
+    def companies(options)
+      begin
+        get('companies', options)
+      rescue => e
+        nil
       end
     end
   end
