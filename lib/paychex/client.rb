@@ -17,6 +17,8 @@ module Paychex
     require 'paychex/client/federal_tax'
     require 'paychex/client/direct_deposit'
     require 'paychex/client/organizations'
+    require 'paychex/client/pay_periods'
+    require 'paychex/client/company_checks'
 
     include Paychex::Client::Auth
     include Paychex::Client::Companies
@@ -29,6 +31,8 @@ module Paychex
     include Paychex::Client::FederalTax
     include Paychex::Client::DirectDeposit
     include Paychex::Client::Organizations
+    include Paychex::Client::PayPeriods
+    include Paychex::Client::CompanyChecks
 
     attr_accessor :token_timeout
   end

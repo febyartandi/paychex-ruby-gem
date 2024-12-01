@@ -8,7 +8,9 @@ module Paychex
 
       # Get a specific worker's profile
       def worker(worker_id, options = {})
-        get("workers/#{worker_id}", options)
+        response = get("workers/#{worker_id}", options)
+
+        response.body.fetch('content')
       end
 
       # Create a worker

@@ -37,10 +37,10 @@ module Paychex
     DEFAULT_TOKEN_TIMEOUT = Time.new
 
     # By default, use sandbox environment
-    DEFAULT_HOST = "https://sandbox.api.paychex.com".freeze
+    DEFAULT_HOST = "https://api.n1.paychex.com".freeze
 
     # The endpoint that will be used to connect if none is set
-    DEFAULT_ENDPOINT = "https://sandbox.api.paychex.com/".freeze
+    DEFAULT_ENDPOINT = "https://api.n1.paychex.com/".freeze
 
     # The response format appended to the path and sent in the 'Accept' header if none is set
     #
