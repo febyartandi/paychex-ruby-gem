@@ -3,7 +3,9 @@ module Paychex
     module Workers
       # Get a list of the workers of the company
       def workers(company_id, options = {})
-        get("companies/#{company_id}/workers", options)
+        response = get("companies/#{company_id}/workers", options)
+
+        response.body.fetch('content')
       end
 
       # Get a specific worker's profile

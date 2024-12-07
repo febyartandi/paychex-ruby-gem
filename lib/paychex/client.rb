@@ -19,6 +19,7 @@ module Paychex
     require 'paychex/client/organizations'
     require 'paychex/client/pay_periods'
     require 'paychex/client/company_checks'
+    require 'paychex/client/request_access'
 
     include Paychex::Client::Auth
     include Paychex::Client::Companies
@@ -33,6 +34,7 @@ module Paychex
     include Paychex::Client::Organizations
     include Paychex::Client::PayPeriods
     include Paychex::Client::CompanyChecks
+    include Paychex::Client::RequestAccess
 
     attr_accessor :token_timeout
   end
