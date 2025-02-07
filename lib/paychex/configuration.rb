@@ -36,11 +36,11 @@ module Paychex
 
     DEFAULT_TOKEN_TIMEOUT = Time.new
 
-    # By default, use sandbox environment
-    DEFAULT_HOST = "https://api.n1.paychex.com".freeze
+    # By default, use production environment
+    DEFAULT_HOST = "https://api.paychex.com".freeze
 
     # The endpoint that will be used to connect if none is set
-    DEFAULT_ENDPOINT = "https://api.n1.paychex.com/".freeze
+    DEFAULT_ENDPOINT = "https://api.paychex.com/".freeze
 
     # The response format appended to the path and sent in the 'Accept' header if none is set
     #
@@ -51,7 +51,7 @@ module Paychex
     DEFAULT_PROXY = nil
 
     # By default, environment will be sandbox
-    DEFAULT_ENVIRONMENT = "sandbox"
+    DEFAULT_ENVIRONMENT = "production"
 
     # The user agent that will be sent to the API endpoint if none is set
     DEFAULT_USER_AGENT = "Paychex Ruby Gem #{Paychex::VERSION}".freeze
